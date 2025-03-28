@@ -1,0 +1,12 @@
+stages:
+  - deploy
+
+deploy_to_github:
+  stage: deploy
+  script:
+    - git clone --mirror $CI_REPOSITORY_URL repo-mirror
+    - cd repo-mirror
+    - git remote set-url --push origin https://oauth2:$GITHUB_TOKEN@github.com/your-username/your-repo.git
+    - git push --mirror
+  only:
+    - main # Change to your branch if needed
