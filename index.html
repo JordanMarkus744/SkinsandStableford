@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stableford Golf</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <img src="GLogo.png" alt="Stableford Golf Logo" class="logo">
+                <nav class="navigation">
+                    <ul>
+                        <li><a href="#home" class="nav-link home-link active" data-page="home">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                            Home
+                        </a></li>
+                        <li><a href="#golfers" class="nav-link" data-page="golfers">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+                                <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+                            </svg>
+                            Golfers
+                        </a></li>
+                        <li><a href="#courses" class="nav-link" data-page="courses">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <path d="M12 13l4-4-1.5-1.5L12 10l-2.5-2.5L8 9l4 4z"></path>
+                            </svg>
+                            Courses
+                        </a></li>
+                        <li><a href="#scores" class="nav-link" data-page="scores">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                                <polyline points="13 2 13 9 20 9"></polyline>
+                            </svg>
+                            Scores
+                        </a></li>
+                        <li><a href="#leaderboard" class="nav-link" data-page="leaderboard">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                            Leaderboard
+                        </a></li>
+                        <li><a href="#export" class="nav-link" data-page="export">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21.2 15.74l-1.52-1.41a9.86 9.86 0 0 0 0-2.67l1.52-1.41a1 1 0 0 0 .21-1.31l-2-3.46a1 1 0 0 0-1.23-.42l-1.77.72a10.12 10.12 0 0 0-2.31-1.33l-.23-1.92a1 1 0 0 0-1-.87h-4a1 1 0 0 0-1 .87l-.23 1.92a10.12 10.12 0 0 0-2.31 1.33l-1.77-.72a1 1 0 0 0-1.23.42l-2 3.46a1 1 0 0 0 .21 1.31l1.52 1.41a9.86 9.86 0 0 0 0 2.67l-1.52 1.41a1 1 0 0 0-.21 1.31l2 3.46a1 1 0 0 0 1.23.42l1.77-.72a10.12 10.12 0 0 0 2.31 1.33l.23 1.92a1 1 0 0 0 1 .87h4a1 1 0 0 0 1-.87l.23-1.92a10.12 10.12 0 0 0 2.31-1.33l1.77.72a1 1 0 0 0 1.23-.42l2-3.46a1 1 0 0 0-.21-1.31zM12 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"></path>
+                            </svg>
+                            Export
+                        </a></li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main id="main-content" class="main-content">
+            <div id="home-view">
+                <header class="content-header">
+                    <h1>Welcome to Stableford Golf</h1>
+                    <p>Manage your golf tournaments and scores with ease.</p>
+                </header>
+                
+                <section class="dashboard-preview">
+                    <div class="preview-card">
+                        <h3>Recent Tournaments</h3>
+                        <p>No recent tournaments</p>
+                    </div>
+                    <div class="preview-card">
+                        <h3>Top Performers</h3>
+                        <p>No data available</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Dynamic Content Sections -->
+            <!-- GOLFERS TAB -->
+            <div id="golfers-view" class="page-view" style="display:none;">
+              <div class="golfers-container">
+                  <h2 class="golfers-title">Golfers Management</h2>
+                  
+                  <div class="golfers-actions">
+                      <button class="add-golfer-btn">
+                          <i class="icon-add">+</i> Add New Golfer
+                      </button>
+                      <div class="search-container">
+                          <input type="text" class="search-input" placeholder="Search golfers...">
+                          <button class="search-btn">
+                              <i class="icon-search">&#128269;</i>
+                          </button>
+                      </div>
+                  </div>
+          
+                  <table class="golfers-table">
+                      <thead>
+                          <tr>
+                              <th class="avatar-column">Photo</th>
+                              <th class="name-column">Name</th>
+                              <th class="handicap-column">Handicap</th>
+                              <th class="email-column">Email</th>
+                              <th class="actions-column">Actions</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <!-- Example row for reference -->
+                          <tr>
+                              <td class="avatar-cell"></td>
+                              <td class="name-cell">John Smith</td>
+                              <td class="handicap-cell">12.5</td>
+                              <td class="email-cell">john.smith@example.com</td>
+                              <td class="actions-cell">
+                                  <button class="edit-btn">Edit</button>
+                                  <button class="delete-btn">Delete</button>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+          
+                  <!-- Add Golfer Modal -->
+                  <div class="modal add-golfer-modal" id="addGolferModal">
+                      <div class="modal-content">
+                          <span class="close-modal">&times;</span>
+                          <h3>Add New Golfer</h3>
+                          <form class="add-golfer-form">
+                              <div class="form-group">
+                                  <label for="golferName">Full Name</label>
+                                  <input type="text" id="golferName" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="golferHandicap">Handicap</label>
+                                  <input type="number" id="golferHandicap" step="0.1" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="golferEmail">Email</label>
+                                  <input type="email" id="golferEmail" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="golferAvatar">Profile Photo</label>
+                                  <input type="file" id="golferAvatar" accept="image/*">
+                              </div>
+                              <div class="modal-actions">
+                                  <button type="submit" class="submit-btn">Add Golfer</button>
+                                  <button type="button" class="cancel-btn">Cancel</button>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+             <!-- COURSES TABs -->
+            <div id="courses-view" class="page-view" style="display:none;">
+                <h2>Courses Management</h2>
+                <div class="content-section">
+                    <button class="add-btn">+ Add New Course</button>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Location</th>
+                                <th>Par</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Course entries will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="scores-view" class="page-view" style="display:none;">
+                <h2>Scores Management</h2>
+                <div class="content-section">
+                    <button class="add-btn">+ Record New Score</button>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Golfer</th>
+                                <th>Course</th>
+                                <th>Date</th>
+                                <th>Stableford Points</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Score entries will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="leaderboard-view" class="page-view" style="display:none;">
+              <div class="leaderboard-container">
+                  <h2 class="leaderboard-title">Tournament Leaderboard</h2>
+                  <table class="leaderboard-table">
+                      <thead>
+                          <tr>
+                              <th class="rank-column">Rank</th>
+                              <th class="player-column">Golfer</th>
+                              <th class="score-column">Gross Score</th>
+                              <th class="points-column">Stableford</th>
+                              <th class="skins-column">Skins</th>
+                              <th class="moneyskins-column">Skins Money</th>
+                              <th class="moneystableford-column">Stableford Money</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <!-- Example row structure (to be dynamically populated) -->
+                          <tr>
+                              <td class="rank">1</td>
+                              <td class="player">
+                                  <div class="player-info">
+                                      <span class="player-name">John Smith</span>
+                                  </div>
+                              </td>
+                              <td class="points">42</td>
+                              <td class="score">74</td>
+                              <td class="skins">3</td>
+                              <td class="moneyskins">$5,000</td>
+                              <td class="moneystableford">$3,000</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+
+            <div id="export-view" class="page-view" style="display:none;">
+                <h2>Export Data</h2>
+                <div class="content-section">
+                    <div class="export-options">
+                        <button class="export-btn">Export Golfers (CSV)</button>
+                        <button class="export-btn">Export Courses (CSV)</button>
+                        <button class="export-btn">Export Scores (CSV)</button>
+                        <button class="export-btn">Export Full Tournament Report (PDF)</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
