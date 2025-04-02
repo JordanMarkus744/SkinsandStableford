@@ -1,6 +1,6 @@
 import sqlite3
 # this takes the scores from one player and returns points
-def calculate_stableford(self, scores, course_id):
+def calculate_stableford(scores, course_id):
     stableford_points = 0
     self.cursor.execute("SELECT hole_number, par, handicap_rating FROM holes WHERE course_id = ?", (course_id,))
     holes = self.cursor.fetchall()

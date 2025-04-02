@@ -1,5 +1,5 @@
 import sqlite3
-def calculate_skins(self, scores, course_id, money = 0): # scores dict key=int val=list[int]
+def calculate_skins(scores, course_id, money = 0): # scores dict key=int val=list[int]
     # returns a list of skins won, dict key=int, val=list[int]
     current_winning_id = 0
     current_lowest_score = 99
@@ -29,9 +29,9 @@ def calculate_skins(self, scores, course_id, money = 0): # scores dict key=int v
             skins_won[current_winning_id] += str(counter) + ","
             points[current_winning_id] += amount_of_skins_won
             total_skins += amount_of_skins_won
-            amount_of_skins_won = 1 # resets it back to 1 there were a bunch of ties before this hole    
-        else:
-            amount_of_skins_won += 1 # if there is a tie, then increment by 1
+            #amount_of_skins_won = 1 # resets it back to 1 there were a bunch of ties before this hole    
+        #else:
+            #amount_of_skins_won += 1 # if there is a tie, then increment by 1
         
         current_lowest_score = 99
         current_winning_id = 0
@@ -84,10 +84,8 @@ def insert_data_into_db(self, skins_won, total_skins, money, scores, course_id):
         self.cursor.execute("SELECT MAX(session_id) FROM sessions")
         result = self.cursor.fetchone()[0]  # This gets the max session_id
         session_id = (result if result is not None else 0) + 1  # Default to 1 if no entries exist
-        
+
     # Insert data into sessions table
     self.cursor.execute("INSERT INTO sessions(session_id, game_num, day, game_type, game_id) VALUES (?,?,?,?,?)", (session_id, game_num, week, 1, game_id))
     self.conn.commit()
-
-    
 

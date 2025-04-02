@@ -1,5 +1,5 @@
 import sqlite3
-def update_handicap(self, golfer_id, stableford_points):
+def update_handicap(golfer_id, stableford_points):
     self.cursor.execute("SELECT handicap FROM golfers WHERE id = ?", (golfer_id,))
     handicap = self.cursor.fetchone()
 
@@ -13,3 +13,5 @@ def update_handicap(self, golfer_id, stableford_points):
     
     self.cursor.execute("UPDATE golfers SET handicap = ? WHERE id = ?", (handicap, golfer_id,))
     self.conn.commit()
+
+    return difference
