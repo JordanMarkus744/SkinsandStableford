@@ -85,6 +85,9 @@
             </div>
 
             <!-- Dynamic Content Sections -->
+
+
+
             <!-- GOLFERS TAB -->
             <div id="golfers-view" class="page-view" style="display:none;">
               <div class="golfers-container">
@@ -105,6 +108,8 @@
                   <table class="golfers-table">
                       <thead>
                           <tr>
+
+                              <th class="avatar-column">Photo</th>
                               <th class="avatar-column">Photo</th>
                               <th class="name-column">Name</th>
                               <th class="handicap-column">Handicap</th>
@@ -115,6 +120,7 @@
                       <tbody>
                           <!-- Example row for reference -->
                           <tr>
+                              <td class="avatar-cell"></td>
                               <td class="avatar-cell"></td>
                               <td class="name-cell">John Smith</td>
                               <td class="handicap-cell">12.5</td>
@@ -159,6 +165,452 @@
               </div>
           </div>
 
+
+
+             <!-- COURSES TABs -->
+             <div id="courses-view" class="page-view" style="display:none;">
+                <div class="courses-container">
+                    <h2 class="courses-title">Courses Management</h2>
+                    
+                    <div class="courses-actions">
+                        <button class="add-course-btn">
+                            <i class="icon-add">+</i> Add New Course
+                        </button>
+                        <div class="search-container">
+                            <input type="text" class="search-input" placeholder="Search courses...">
+                            <button class="search-btn">
+                                <i class="icon-search">&#128269;</i>
+                            </button>
+                        </div>
+                    </div>
+            
+                    <table class="courses-table">
+                        <thead>
+                            <tr>
+                                <th class="course-image-column">Image</th>
+                                <th class="name-column">Course Name</th>
+                                <th class="location-column">Location</th>
+                                <th class="par-column">Total Par</th>
+                                <th class="actions-column">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Example row for reference -->
+                            <tr>
+                                <td class="course-image-cell">
+                                    <img src="RSA.jpg" alt="Course" class="course-thumbnail">
+                                </td>
+                                <td class="name-cell">Redstone Arsenal Warrior Course</td>
+                                <td class="location-cell">Huntsville, AL</td>
+                                <td class="par-cell">72</td>
+                                <td class="actions-cell">
+                                    <button class="view-details-btn">View Details</button>
+                                    <button class="edit-btn">Edit</button>
+                                    <button class="delete-btn">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            
+                    <!-- Add Course Modal -->
+                    <div class="modal add-course-modal" id="addCourseModal">
+                        <div class="modal-content">
+                            <span class="close-modal">&times;</span>
+                            <h3>Add New Course</h3>
+                            <form class="add-course-form">
+                                <div class="form-group">
+                                    <label for="courseName">Course Name</label>
+                                    <input type="text" id="courseName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="courseLocation">Location</label>
+                                    <input type="text" id="courseLocation" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="courseThumbnail">Course Image</label>
+                                    <input type="file" id="courseThumbnail" accept="image/*">
+                                </div>
+                                <div class="hole-pars-section">
+                                    <h4>Hole Pars</h4>
+                                    <div class="hole-pars-grid">
+                                        <!-- Dynamically generated hole par inputs -->
+                                        <div class="hole-par-input">
+                                            <label for="hole1Par">Hole 1</label>
+                                            <input type="number" id="hole1Par" min="3" max="5" required>
+                                        </div>
+                                        <!-- Repeat for 18 holes -->
+                                    </div>
+                                </div>
+                                <div class="modal-actions">
+                                    <button type="submit" class="submit-btn">Add Course</button>
+                                    <button type="button" class="cancel-btn">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            
+                    <!-- Course Details Modal -->
+                    <div class="modal course-details-modal" id="courseDetailsModal">
+                        <div class="modal-content">
+                            <span class="close-modal">&times;</span>
+                            <h3 class="course-details-title">Course Details</h3>
+                            <div class="course-details-content">
+                                <div class="course-overview">
+                                    <img src="default-course.jpg" class="course-full-image" alt="Course">
+                                    <div class="course-info">
+                                        <h4 id="detailCourseName">Sunset Golf Club</h4>
+                                        <p id="detailCourseLocation">Phoenix, AZ</p>
+                                        <p id="detailCoursePar">Total Par: 72</p>
+                                    </div>
+                                </div>
+                                <div class="hole-details">
+                                    <h4>Hole-by-Hole Par</h4>
+                                    <table class="hole-pars-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Hole</th>
+                                                <th>Par</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="holeParsTableBody">
+                                            <!-- Dynamically populated -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- ENTER SCORES -->
+            <div id="scores-view" class="page-view" style="display:none;">
+                <div class="scores-container">
+                    <h2 class="scores-title">Scores Management</h2>
+                    
+                    <div class="scores-actions">
+                        <button class="add-score-btn">
+                            <i class="icon-add">+</i> Record New Scores
+                        </button>
+                        <div class="search-container">
+                            <input type="text" class="search-input" placeholder="Search scores...">
+                            <button class="search-btn">
+                                <i class="icon-search">&#128269;</i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <table class="scores-table">
+                        <thead>
+                            <tr>
+                                <th class="golfer-column">Golfer</th>
+                                <th class="course-column">Course</th>
+                                <th class="date-column">Date</th>
+                                <th class="stableford-column">Stableford Points</th>
+                                <th class="gross-column">Gross Score</th>
+                                <th class="actions-column">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Example row for reference -->
+                            <tr>
+                                <td class="golfer-cell">John Smith</td>
+                                <td class="course-cell">Redstone Arsenal Warrior Course</td>
+                                <td class="date-cell">03/25/2025</td>
+                                <td class="stableford-cell">36</td>
+                                <td class="gross-cell">74</td>
+                                <td class="actions-cell">
+                                    <button class="view-details-btn">View Details</button>
+                                    <button class="edit-btn">Edit</button>
+                                    <button class="delete-btn">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Add Score Modal -->
+                    <div class="modal add-score-modal" id="addScoreModal">
+                        <div class="modal-content score-modal-content">
+                            <span class="close-modal">&times;</span>
+                            <h3>Record New Scores</h3>
+                            <form class="add-score-form">
+                                <div class="score-header-inputs">
+                                    <div class="form-group">
+                                        <label for="scoreDate">Date</label>
+                                        <input type="date" id="scoreDate" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="scoreCourse">Course</label>
+                                        <select id="scoreCourse" required>
+                                            <option value="">Select Course</option>
+                                            <option value="1">Redstone Arsenal Warrior Course</option>
+                                            <!-- More courses would be added dynamically -->
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="scoreGolfer">Golfer</label>
+                                        <select id="scoreGolfer" required>
+                                            <option value="">Select Golfer</option>
+                                            <option value="1">John Smith</option>
+                                            <!-- More golfers would be added dynamically -->
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="hole-scores-section">
+                                    <h4>Hole-by-Hole Scores</h4>
+                                    <div class="hole-scores-grid">
+                                        <!-- Holes 1-9 Row -->
+                                        <div class="hole-row">
+                                            <div class="hole-label">Hole</div>
+                                            <div class="hole-number">1</div>
+                                            <div class="hole-number">2</div>
+                                            <div class="hole-number">3</div>
+                                            <div class="hole-number">4</div>
+                                            <div class="hole-number">5</div>
+                                            <div class="hole-number">6</div>
+                                            <div class="hole-number">7</div>
+                                            <div class="hole-number">8</div>
+                                            <div class="hole-number">9</div>
+                                        </div>
+                                        <div class="hole-row">
+                                            <div class="hole-label">Par</div>
+                                            <div class="hole-par">4</div>
+                                            <div class="hole-par">3</div>
+                                            <div class="hole-par">5</div>
+                                            <div class="hole-par">4</div>
+                                            <div class="hole-par">4</div>
+                                            <div class="hole-par">5</div>
+                                            <div class="hole-par">3</div>
+                                            <div class="hole-par">4</div>
+                                            <div class="hole-par">4</div>
+                                        </div>
+                                        <div class="hole-row">
+                                            <div class="hole-label">Score</div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole1" required></div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole2" required></div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole3" required></div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole4" required></div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole5" required></div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole6" required></div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole7" required></div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole8" required></div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole9" required></div>
+                                        </div>
+                                        
+                                        <!-- Holes 10-18 Row -->
+                                        <div class="hole-row">
+                                            <div class="hole-label">Hole</div>
+                                            <div class="hole-number">10</div>
+                                            <div class="hole-number">11</div>
+                                            <div class="hole-number">12</div>
+                                            <div class="hole-number">13</div>
+                                            <div class="hole-number">14</div>
+                                            <div class="hole-number">15</div>
+                                            <div class="hole-number">16</div>
+                                            <div class="hole-number">17</div>
+                                            <div class="hole-number">18</div>
+                                        </div>
+                                        <div class="hole-row">
+                                            <div class="hole-label">Par</div>
+                                            <div class="hole-par">4</div>
+                                            <div class="hole-par">3</div>
+                                            <div class="hole-par">5</div>
+                                            <div class="hole-par">4</div>
+                                            <div class="hole-par">3</div>
+                                            <div class="hole-par">5</div>
+                                            <div class="hole-par">4</div>
+                                            <div class="hole-par">4</div>
+                                            <div class="hole-par">4</div>
+                                        </div>
+                                        <div class="hole-row">
+                                            <div class="hole-label">Score</div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole10" required></div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole11" required></div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole12" required></div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole13" required></div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole14" required></div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole15" required></div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole16" required></div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole17" required></div>
+                                            <div class="hole-input"><input type="number" min="1" max="12" id="hole18" required></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="score-summary">
+                                        <div class="summary-item">
+                                            <span>Front 9:</span>
+                                            <span id="front9Total">-</span>
+                                        </div>
+                                        <div class="summary-item">
+                                            <span>Back 9:</span>
+                                            <span id="back9Total">-</span>
+                                        </div>
+                                        <div class="summary-item total">
+                                            <span>Total Gross:</span>
+                                            <span id="grossTotal">-</span>
+                                        </div>
+                                        <div class="summary-item points">
+                                            <span>Stableford Points:</span>
+                                            <span id="stablefordTotal">-</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="modal-actions">
+                                    <button type="submit" class="submit-btn">Save Score</button>
+                                    <button type="button" class="cancel-btn">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Score Details Modal -->
+                    <div class="modal score-details-modal" id="scoreDetailsModal">
+                        <div class="modal-content">
+                            <span class="close-modal">&times;</span>
+                            <h3 class="score-details-title">Score Details</h3>
+                            <div class="score-details-content">
+                                <div class="score-overview">
+                                    <div class="score-info">
+                                        <h4 id="detailGolferName">John Smith</h4>
+                                        <p id="detailCourseName">Redstone Arsenal Warrior Course</p>
+                                        <p id="detailScoreDate">Date: March 25, 2025</p>
+                                        <p id="detailGrossScore">Gross Score: 74</p>
+                                        <p id="detailStablefordPoints">Stableford Points: 36</p>
+                                    </div>
+                                </div>
+                                <div class="hole-scores">
+                                    <h4>Hole-by-Hole Scores</h4>
+                                    <table class="hole-scores-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Hole</th>
+                                                <th>1</th>
+                                                <th>2</th>
+                                                <th>3</th>
+                                                <th>4</th>
+                                                <th>5</th>
+                                                <th>6</th>
+                                                <th>7</th>
+                                                <th>8</th>
+                                                <th>9</th>
+                                                <th>Out</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Par</td>
+                                                <td>4</td>
+                                                <td>3</td>
+                                                <td>5</td>
+                                                <td>4</td>
+                                                <td>4</td>
+                                                <td>5</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td>4</td>
+                                                <td>36</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Score</td>
+                                                <td>4</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td>5</td>
+                                                <td>4</td>
+                                                <td>5</td>
+                                                <td>2</td>
+                                                <td>4</td>
+                                                <td>5</td>
+                                                <td>36</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Points</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>3</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>3</td>
+                                                <td>2</td>
+                                                <td>1</td>
+                                                <td>18</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                    <table class="hole-scores-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Hole</th>
+                                                <th>10</th>
+                                                <th>11</th>
+                                                <th>12</th>
+                                                <th>13</th>
+                                                <th>14</th>
+                                                <th>15</th>
+                                                <th>16</th>
+                                                <th>17</th>
+                                                <th>18</th>
+                                                <th>In</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Par</td>
+                                                <td>4</td>
+                                                <td>3</td>
+                                                <td>5</td>
+                                                <td>4</td>
+                                                <td>3</td>
+                                                <td>5</td>
+                                                <td>4</td>
+                                                <td>4</td>
+                                                <td>4</td>
+                                                <td>36</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Score</td>
+                                                <td>4</td>
+                                                <td>2</td>
+                                                <td>5</td>
+                                                <td>4</td>
+                                                <td>3</td>
+                                                <td>6</td>
+                                                <td>5</td>
+                                                <td>4</td>
+                                                <td>5</td>
+                                                <td>38</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Points</td>
+                                                <td>2</td>
+                                                <td>3</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>1</td>
+                                                <td>16</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- LEADERBOARD -->
 
              <!-- COURSES TABs -->
             <div id="courses-view" class="page-view" style="display:none;">
@@ -232,11 +684,26 @@
                               <td class="moneyskins">$5,000</td>
                               <td class="moneystableford">$3,000</td>
                           </tr>
+
+                          <tr>
+                            <td class="rank">1</td>
+                            <td class="player">
+                                <div class="player-info">
+                                    <span class="player-name">John Smith</span>
+                                </div>
+                            </td>
+                            <td class="points">42</td>
+                            <td class="score">74</td>
+                            <td class="skins">3</td>
+                            <td class="moneyskins">$5,000</td>
+                            <td class="moneystableford">$3,000</td>
+                        </tr>
                       </tbody>
                   </table>
               </div>
           </div>
 
+            <!-- EXPORT DATA TAB -->
             <div id="export-view" class="page-view" style="display:none;">
                 <h2>Export Data</h2>
                 <div class="content-section">
